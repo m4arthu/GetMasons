@@ -3,28 +3,38 @@ import { HeaderContainer } from "../styled_components/style.js"
 import { Logo } from "./logo.jsx"
 import { useContext } from "react"
 import { authContext } from "../contexts/authContext.jsx"
-import {MdOutlineDoorFront} from  "react-icons/md" 
+import { MdOutlineDoorFront } from "react-icons/md"
 export const Header = () => {
-    const { isloged,logOut } = useContext(authContext)
+    const { isloged, logOut } = useContext(authContext)
     return (
         isloged() ?
             <>
                 <HeaderContainer>
-                    <Logo />
+                <div>
+                        <Logo />
+                        <p>
+                            GetMasons
+                        </p>
+                    </div>
                     <div>
                         <Link to="/"> Home </Link>
-                        <Link> Perfil </Link>
+                        <Link to="/profile"> Perfil </Link>
                         <Link>
-                         <MdOutlineDoorFront size={"30px"} onClick={()=>{logOut()}}/>
+                            <MdOutlineDoorFront size={"30px"} onClick={() => { logOut() }} />
                         </Link>
-                         
+
                     </div>
                 </HeaderContainer>
             </>
             :
             <>
                 <HeaderContainer>
-                    <Logo />
+                    <div>
+                        <Logo />
+                        <p>
+                            GetMasons
+                        </p>
+                    </div>
                     <div>
                         <Link to="/"> Home </Link>
                         <Link to="/login"> Entrar </Link>

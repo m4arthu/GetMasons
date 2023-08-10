@@ -1,5 +1,5 @@
 import {createGlobalStyle, styled} from "styled-components"
-
+import wall from "../assets/wall.jpg"
 export const  GlobalStyle = createGlobalStyle`
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -30,6 +30,8 @@ footer, header, hgroup, menu, nav, section {
 body {
     font-family: 'Lexend Deca', sans-serif;
 	line-height: 1;
+	background:url(${wall});
+	
 }
 ol, ul {
 	list-style: none;
@@ -45,5 +47,9 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+a{
+	text-decoration:none;
+	color:inherit;
 }
 `
