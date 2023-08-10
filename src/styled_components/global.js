@@ -31,7 +31,6 @@ body {
     font-family: 'Lexend Deca', sans-serif;
 	line-height: 1;
 	background:url(${wall});
-	
 }
 ol, ul {
 	list-style: none;

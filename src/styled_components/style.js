@@ -144,3 +144,11 @@ div{
         overflow: hidden
     }
 `
+export const ModalButton = styled.button`
+    width:30px;
+    height:30px;
+    background:red;
+    border-radius: 6px;
+    border:inherit;
+    color:white;
+`
