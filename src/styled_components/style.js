@@ -6,7 +6,15 @@ export const LogoContainer = styled.div`
 export const Container = styled.div`
 width:100vw;
 display:flex;
+flex-direction:column;
 justify-content:center;
+align-items:center;
+h2{
+    font-size:50px;
+    font-weight:bold;
+    text-align:center;
+    width:100%
+}
 `
 export const CenterContainer = styled.div`
 margin-top: 80px;
@@ -18,7 +26,7 @@ flex-direction:column;
 export const FormContainer = styled.form`
 border-radius:12px;
 background-color:white;
-width:70vw;
+max-width:70vw;
 display:flex;
 align-items:center;
 flex-direction:column;
@@ -26,7 +34,7 @@ margin-top:40px;
 margin-bottom:40px;
 gap: 20px;
 input{
-    margin-top:30px;
+    margin:30px;
     width:60vw;
     height:50px;
     border-radius:12px;
@@ -36,6 +44,12 @@ input{
 input:valid, input::placeholder{
     font-family: 'Lexend Deca', sans-serif;
     font-size:20px;
+}
+input:focus::placeholder {
+    font-size:15px;
+    color: #13AEC6;
+    -webkit-transform: translateY(-20px);
+    transform: translateY(-20px);
 }
 input:invalid {
     font-family: 'Lexend Deca', sans-serif;
@@ -101,15 +115,13 @@ div{
 
 export const ServiceContainer = styled.div`
 border: 4px solid #13AEC6;
-padding: 30px 10px;
-width:100%;
-margin: 30px;
+max-width:100%;
 display:flex;
 border-radius:12px;
+margin:15px 15px;
 img{
     border-radius:6px;
     width:300px;
-    margin-left:30px;
 }
 div{
     width:100%;

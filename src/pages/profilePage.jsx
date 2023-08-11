@@ -77,11 +77,12 @@ export const ProfilePage = () => {
                         setModalView(false)
                     }}>x</ModalButton>
                     <Container>
+                        <h2> Add service !!</h2>
                         <FormContainer onSubmit={sendService}>
                             <input type="text" ref={imagUrl} placeholder="Image url"/>
                             <input type="text" ref={title} placeholder="Title" />
                             <input type="number" ref={price} placeholder="Price" />
-                            <input type="text" ref={description}  placeholder="description"/>
+                            <input type="text" ref={description} maxLength={386} placeholder="description (max 386 char)"/>
                             <input type="number" ref={phone} placeholder="phoneNumber (99 99999-9999)" />
                             <button> Enviar </button>
                         </FormContainer>
