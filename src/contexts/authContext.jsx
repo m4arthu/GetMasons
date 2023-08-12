@@ -36,8 +36,8 @@ export const AuthProvider = ({children}) =>{
     }
 
     const logOut = () => {
-        localStorage.removeItem("token")
         navigate("/")
+        localStorage.removeItem("token")
         axios.defaults.headers.common['Authorization'] = "";
     }
     return (
