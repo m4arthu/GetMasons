@@ -49,10 +49,10 @@ export const Service = ({ object, viewEdit }) => {
                         <p><span>Phone:</span>{object.phone}</p>
                     </div>
                     {viewEdit ? <IconContainer className="icons">
-                        <MdAssignmentLate style={{ cursor: "pointer" }} size={"60px"} color={"green"} onClick={() => {
+                        < MdAssignmentReturned style={{ cursor: "pointer" }} size={"60px"} color={"green"} onClick={() => {
                             disable_able()
                         }} />
-                        <BsFillTrashFill style={{ cursor: "pointer" }} size={"60px"} color={"green"} onClick={() => {
+                        <BsFillTrashFill style={{ cursor: "pointer" }} size={"60px"}  onClick={() => {
                            deletService()
                         }} />
                     </IconContainer> : ""}
@@ -79,7 +79,7 @@ export const Service = ({ object, viewEdit }) => {
                         <MdAssignmentLate style={{ cursor: "pointer" }} size={"60px"} color={"red"} onClick={() => {
                             disable_able()
                         }} />
-                        <BsFillTrashFill style={{ cursor: "pointer" }} size={"60px"} color={"red"} onClick={() => {
+                        <BsFillTrashFill style={{ cursor: "pointer" }} size={"60px"}  onClick={() => {
                            deletService()
                         }} />
                     </IconContainer> : ""}
