@@ -49,7 +49,7 @@ export const Service = ({ object, viewEdit }) => {
             <>
                 <SweetAlert2 show={alertView} title={alertTitle} onConfirm={() => {
                     setAlertView(false)
-                    window.location.reload()
+                    navigate("/")
                 }} />
                 <ServiceContainer>
                     <img src={object.image} alt="" />
