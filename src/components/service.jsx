@@ -3,8 +3,10 @@ import { MdAssignmentReturned, MdAssignmentLate } from "react-icons/md"
 import SweetAlert2 from "react-sweetalert2"
 import { useState } from "react"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 export const Service = ({ object, viewEdit }) => {
     const [alertTitle, setAlertTitle] = useState("")
+    const navigate = useNavigate()
     const [alertView, setAlertView] = useState(false)
     const disable_able = async () => {
         console.log(object.id)
@@ -24,7 +26,8 @@ export const Service = ({ object, viewEdit }) => {
             <>
                 <SweetAlert2 show={alertView} title={alertTitle} onConfirm={() => {
                     setAlertView(false)
-                    window.location.reload()
+                    navigate("/")
+
                 }} />
                 <ServiceContainer>
                     <img src={object.image} alt="" />

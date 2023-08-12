@@ -52,6 +52,9 @@ export const ProfilePage = () => {
             setAlertShow(true)
         })
     }
+    if (!isloged()) {
+        navigate("/")
+    }
     useEffect(() => {
         if (!isloged()) {
             navigate("/")
