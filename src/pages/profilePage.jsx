@@ -130,7 +130,7 @@ export const ProfilePage = () => {
                                 setModalView(true)
                             }}><MdAssignmentAdd size={"30px"} /><p>adicione um  serviço</p></div>
                             {userServices.map((s) => {
-                                return <Service key={s.id} viewEdit={true} object={s} />
+                                return <Service setUserServices={setUserServices} key={s.id} viewEdit={true} object={s} />
                             })}
                         </FormContainer>
                         <ReacModal ariaHideApp={false} isOpen={modalView}>
