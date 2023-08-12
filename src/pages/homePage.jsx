@@ -10,22 +10,38 @@ export const HomePage = () => {
     useEffect(() => {
         axios.get(import.meta.env.VITE_API_URL + "/services")
             .then((r) => {
-                setServices(r.data)
+                if (r.data.length === 0) {
+                    setServices(["sem  serviços no momento"])
+                } else {
+                    setServices(r.data)
+                }
             })
     }, [])
-    if (services.length === 0) {
-        return (
-            <>
-                <Header />
-                <Container>
-                    <ReactLoading color="#13AEC6" width={"250px"} />
-                    <p>
-                        Loading....
-                    </p>
-                </Container>
-            </>
-        )
+    if (services.length === 0) {  
+            return (
+                <>
+                    <Header />
+                    <Container>
+                        <ReactLoading color="#13AEC6" width={"250px"} />
+                        <p>
+                            Loading....
+                        </p>
+                    </Container>
+                </>
+            )
     } else {
+        if (services[0] === "sem  serviços no momento") {
+            return (
+                <>
+                    <Header />
+                    <Container>
+                        <p>
+                            Estamos pobres,sem serviços adicione um  no seu  perfil (TT) !!
+                        </p>
+                    </Container>
+                </>
+            )
+        }
         return (
             <>
                 <Header />
