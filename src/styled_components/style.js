@@ -160,6 +160,17 @@ div{
         white-space: nowrap;
         overflow: hidden
     }
+
+
+`
+export const IconContainer = styled.section`
+width:100%;
+display:flex;
+justify-content:right;
+.icons{
+    display:block
+}
+
 `
 export const ModalButton = styled.button`
     width:30px;

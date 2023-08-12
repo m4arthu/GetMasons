@@ -1,5 +1,6 @@
-import { ServiceContainer } from "../styled_components/style.js"
+import { IconContainer, ServiceContainer } from "../styled_components/style.js"
 import { MdAssignmentReturned, MdAssignmentLate } from "react-icons/md"
+import {BsFillTrashFill} from "react-icons/bs"
 import SweetAlert2 from "react-sweetalert2"
 import { useState } from "react"
 import axios from "axios"
@@ -21,6 +22,14 @@ export const Service = ({ object, viewEdit }) => {
         }
     }
 
+    const  deletService = () =>  {
+        axios.delete(import.meta.env.VITE_API_URL + `/service/${object.id}`)
+        .then(()=>{
+            setAlertTitle("serviço apagado !!")
+            setAlertView(true)
+        })
+    }
+
     return (
         object.avaible ?
             <>
@@ -39,9 +48,14 @@ export const Service = ({ object, viewEdit }) => {
                         </div>
                         <p><span>Phone:</span>{object.phone}</p>
                     </div>
-                    {viewEdit ? <MdAssignmentReturned size={"60px"} color={"green"} onClick={() => {
-                        disable_able()
-                    }} /> : ""}
+                    {viewEdit ? <IconContainer className="icons">
+                        <MdAssignmentLate style={{ cursor: "pointer" }} size={"60px"} color={"green"} onClick={() => {
+                            disable_able()
+                        }} />
+                        <BsFillTrashFill style={{ cursor: "pointer" }} size={"60px"} color={"green"} onClick={() => {
+                           deletService()
+                        }} />
+                    </IconContainer> : ""}
                 </ServiceContainer>
             </>
 
@@ -61,9 +75,14 @@ export const Service = ({ object, viewEdit }) => {
                         </div>
                         <p><span>Phone:</span>{object.phone}</p>
                     </div>
-                    {viewEdit ? <MdAssignmentLate style={{cursor: "pointer"}} size={"60px"} color={"red"} onClick={() => {
-                        disable_able()
-                    }} /> : ""}
+                    {viewEdit ? <IconContainer className="icons">
+                        <MdAssignmentLate style={{ cursor: "pointer" }} size={"60px"} color={"red"} onClick={() => {
+                            disable_able()
+                        }} />
+                        <BsFillTrashFill style={{ cursor: "pointer" }} size={"60px"} color={"red"} onClick={() => {
+                           deletService()
+                        }} />
+                    </IconContainer> : ""}
                 </ServiceContainer>
             </>
     )
