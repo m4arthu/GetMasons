@@ -35,7 +35,12 @@ export const ProfilePage = () => {
         }).then(()=>{
             setAlertTitle("Serviço criado")
             setAlertShow(true)
-            window.location.reload()
+             axios.get(import.meta.env.VITE_API_URL + "/services/me")
+            .then((r) => {
+                setUserServices(r.data)
+            }).catch((e) => {
+                console.log(e.response.data)
+            })
         }).catch((e)=> {
             setAlertTitle("erro")
             setAlertBody(e.response.data)
