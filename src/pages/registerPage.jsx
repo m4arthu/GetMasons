@@ -5,7 +5,7 @@ import { Logo } from "../components/logo.jsx"
 import { CenterContainer, Container, FormContainer } from "../styled_components/style"
 import { authContext } from "../contexts/authContext.jsx"
 import { Header } from "../components/header.jsx"
-
+import ReactLoading from "react-loading"
 export const RegisterPage = () => {
     const { register } = useContext(authContext)
     const [showAlert, setShowAlert] = useState(false)
@@ -17,18 +17,25 @@ export const RegisterPage = () => {
     const password = useRef(null)
     const confirmPassword = useRef(null)
     const navigate = useNavigate()
+    const [buttonState,setButtonState] = useState(false)
+
+
     const Submit = async (e) => {
+        setButtonState(true)
         e.preventDefault()
         if (password.current.value !== confirmPassword.current.value) {
             setAlertText("Senha e confirma  senha  precisam ser igauis!!")
+            setButtonState(false)
             setShowAlert(true)
         } else {
             const registed = await register(name.current.value, email.current.value
                 , phone.current.value, local.current.value
                 , password.current.value)
             if (registed.status === 201) {
+                setButtonState(false)
                 navigate("/login")
             } else {
+                setButtonState(false)
                 setAlertText(registed.response.data)
                 setShowAlert(true)
             }
@@ -53,7 +60,7 @@ export const RegisterPage = () => {
                         <input type="number" ref={phone} placeholder="Numero  de celular" />
                         <input type="password" ref={password} placeholder="Senha" />
                         <input type="password" ref={confirmPassword} placeholder="Confirme sua senha" />
-                        <button> Cadastrar</button>
+                        {buttonState ? <ReactLoading  color="#13AEC6" /> : <button disabled={buttonState}> Enviar </button>}
                         <a href="/login"> ja tem uma conta ? entre aqui....</a>
                     </FormContainer>
                 </CenterContainer>

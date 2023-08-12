@@ -5,7 +5,7 @@ import { useRef, useContext, useState } from "react"
 import { authContext } from "../contexts/authContext.jsx"
 import SweetAlert2 from "react-sweetalert2"
 import { Header } from "../components/header.jsx"
-
+import ReactLoading from "react-loading"
 export const LoginPage = () => {
     const { login } = useContext(authContext)
     const [showAlert, setShowAlert] = useState(false)
@@ -13,15 +13,18 @@ export const LoginPage = () => {
     const email = useRef(null)
     const password = useRef(null)
     const navigate = useNavigate()
-
+    const [buttonState,setButtonState] = useState(false)
     const Submit = async (e) => {
+        setButtonState(true)
         e.preventDefault()
         const loged = await login(email.current.value, password.current.value)
         if (loged.status === 200) {
+            setButtonState(false)
              localStorage.setItem("token", loged.data)
             console.log(loged.data)
             navigate("/")
         } else {
+            setButtonState(false)
             setAlertText(loged.response.data)
             setShowAlert(true)
         }
@@ -42,7 +45,7 @@ export const LoginPage = () => {
                     <FormContainer onSubmit={Submit}>
                         <input type="email" ref={email} placeholder="Email" />
                         <input type="password" ref={password} placeholder="Confirme sua senha" />
-                        <button> Entrar </button>
+                        {buttonState ? <ReactLoading  color="#13AEC6" /> : <button disabled={buttonState}> Enviar </button>}
                         <a href="/register"> Não tem uma conta ? cadastre-se aqui....</a>
                     </FormContainer>
                 </CenterContainer>

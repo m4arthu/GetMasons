@@ -15,6 +15,11 @@ h2{
     text-align:center;
     width:100%
 }
+p{
+    font-family: 'Lexend Deca', sans-serif;
+    font-weight:bold;
+    font-size:20px;
+}
 `
 export const CenterContainer = styled.div`
 margin-top: 80px;
