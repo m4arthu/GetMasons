@@ -46,7 +46,7 @@ export const LoginPage = () => {
                         <input type="email" ref={email} placeholder="Email" />
                         <input type="password" ref={password} placeholder="Confirme sua senha" />
                         {buttonState ? <ReactLoading  color="#13AEC6" /> : <button disabled={buttonState}> Enviar </button>}
-                        <Link to={"/registe"}>Não tem uma conta ? registre-se aqui</Link>
+                        <Link to={"/register"}>Não tem uma conta ? registre-se aqui</Link>
                     </FormContainer>
                 </CenterContainer>
             </Container>
