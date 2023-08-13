@@ -1,5 +1,5 @@
 import { useContext, useRef, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import SweetAlert2 from "react-sweetalert2"
 import { Logo } from "../components/logo.jsx"
 import { CenterContainer, Container, FormContainer } from "../styled_components/style"
@@ -61,7 +61,7 @@ export const RegisterPage = () => {
                         <input type="password" ref={password} placeholder="Senha" />
                         <input type="password" ref={confirmPassword} placeholder="Confirme sua senha" />
                         {buttonState ? <ReactLoading  color="#13AEC6" /> : <button disabled={buttonState}> Enviar </button>}
-                        <a href="/login"> ja tem uma conta ? entre aqui....</a>
+                        <Link to={"/login"}> ja tem uma conta ? entre aqui....</Link>
                     </FormContainer>
                 </CenterContainer>
             </Container>

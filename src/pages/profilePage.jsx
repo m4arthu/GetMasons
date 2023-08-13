@@ -155,7 +155,7 @@ export const ProfilePage = () => {
                                 <FormContainer onSubmit={sendService}>
                                     <input type="text" ref={imagUrl} placeholder="Image url" />
                                     <input type="text" ref={title} placeholder="Title" />
-                                    <input type="number" ref={price} placeholder="Price" />
+                                    <input type="number" ref={price} placeholder="Price (R$/h)" />
                                     <input type="text" ref={description} maxLength={386} placeholder="description (max 386 char)" />
                                     <input type="number" ref={phone} placeholder="phoneNumber (99 99999-9999)" />
                                     {buttonState ? <ReactLoading color="#13AEC6" /> : <button disabled={buttonState}> Enviar </button>}
@@ -228,7 +228,7 @@ export const ProfilePage = () => {
                                 <FormContainer onSubmit={sendService}>
                                     <input type="text" ref={imagUrl} placeholder="Image url" />
                                     <input type="text" ref={title} placeholder="Title" />
-                                    <input type="number" ref={price} placeholder="Price" />
+                                    <input type="number" ref={price} placeholder="Price (RS/h)" />
                                     <input type="text" ref={description} maxLength={386} placeholder="description (max 386 char)" />
                                     <input type="number" ref={phone} placeholder="phoneNumber (99 99999-9999)" />
                                     {buttonState ? <ReactLoading color="#13AEC6" /> : <button disabled={buttonState}> Enviar </button>}

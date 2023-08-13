@@ -1,6 +1,6 @@
 import { Logo } from "../components/logo.jsx"
 import { CenterContainer, Container, FormContainer } from "../styled_components/style"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useRef, useContext, useState } from "react"
 import { authContext } from "../contexts/authContext.jsx"
 import SweetAlert2 from "react-sweetalert2"
@@ -46,7 +46,7 @@ export const LoginPage = () => {
                         <input type="email" ref={email} placeholder="Email" />
                         <input type="password" ref={password} placeholder="Confirme sua senha" />
                         {buttonState ? <ReactLoading  color="#13AEC6" /> : <button disabled={buttonState}> Enviar </button>}
-                        <a href="/register"> Não tem uma conta ? cadastre-se aqui....</a>
+                        <Link to={"/registe"}>Não tem uma conta ? registre-se aqui</Link>
                     </FormContainer>
                 </CenterContainer>
             </Container>
