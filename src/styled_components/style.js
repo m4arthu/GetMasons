@@ -124,17 +124,25 @@ max-width:100%;
 display:flex;
 border-radius:12px;
 margin:15px 15px;
+section{
+    width:130px;;
+}
 img{
     border-radius:6px;
     width:300px;
+    margin-right:10px;
 }
 div{
     width:100%;
+    max-width:386px;
     text-align:center;
     word-break:break-all;
     display:flex;
     align-items:right;
     flex-direction:column;
+    margin-bottom:10px;
+    margin-right:10px;
+    margin-left:10px;
     h2{
         font-weight:bold;
         font-size:20px;
@@ -146,20 +154,13 @@ div{
         margin-left:40px;
         font-size:20px;
         margin-top:20px;
+        font-weight:200;
         span {
             font-weight:bold;
             margin-right:10px;
         }
     }
 }
-
-.text{
-        max-height:80px;
-        text-overflow: ellipsis;
-        height:10px;
-        white-space: nowrap;
-        overflow: hidden
-    }
 
 
 `

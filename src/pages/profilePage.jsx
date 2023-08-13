@@ -36,17 +36,9 @@ export const ProfilePage = () => {
             phone: phone.current.value,
             avaible: true
         }).then(() => {
-            setButtonState(false)
             setAlertTitle("Serviço criado")
             setAlertShow(true)
-            axios.get(import.meta.env.VITE_API_URL + "/services/me")
-                .then((r) => {
-                    setUserServices(r.data)
-                }).catch((e) => {
-                    console.log(e.response.data)
-                })
         }).catch((e) => {
-            setButtonState(false)
             setAlertTitle("erro")
             setAlertBody(e.response.data)
             setAlertShow(true)
@@ -70,12 +62,41 @@ export const ProfilePage = () => {
                 console.log(e.response.data)
             })
     }, [])
-
+    console.log(userServices)
     if (userServices.length === 0) {
         return (
             <>
                 <Header />
                 <Container>
+                    <SweetAlert2 onConfirm={() => {
+                        setAlertShow(false)
+                        setButtonState(false)
+                        setModalView(false)
+                        axios.get(import.meta.env.VITE_API_URL + "/services/me")
+                        .then((r) => {
+                             if(r.data.length === 0) {
+                                 setUserServices(["  Você nâo possui serviços!!  "])
+                             } else {
+                                setUserServices(r.data)
+                             }
+                        }).catch((e) => {
+                            console.log(e.response.data)
+                        })
+                    }} onResolve={()=> {
+                        setAlertShow(false)
+                        setButtonState(false)
+                        setModalView(false)
+                        axios.get(import.meta.env.VITE_API_URL + "/services/me")
+                        .then((r) => {
+                             if(r.data.length === 0) {
+                                 setUserServices(["  Você nâo possui serviços!!  "])
+                             } else {
+                                setUserServices(r.data)
+                             }
+                        }).catch((e) => {
+                            console.log(e.response.data)
+                        })
+                    }} show={alertShow} title={alertTitle} text={alertBody} />
                     <ReactLoading color="#13AEC6" width={"250px"} />
                     <p>
                         Loading....
@@ -90,14 +111,42 @@ export const ProfilePage = () => {
                     <Header />
                     <Container>
                         <FormContainer>
-                        <div className="addServiceIcon" onClick={() => {
+                            <div className="addServiceIcon" onClick={() => {
                                 setModalView(true)
+                                setAlertTitle("")
+                                setAlertBody("")
+                                setAlertShow(false)
                             }}><MdAssignmentAdd size={"30px"} /><p>adicione um  serviço</p></div>
                             <p>
                                 {userServices[0]}
                             </p>
                         </FormContainer>
                         <ReacModal ariaHideApp={false} isOpen={modalView}>
+                            <SweetAlert2 onConfirm={() => {
+                                setAlertShow(false)
+                                setButtonState(false)
+                                setModalView(false)
+                                axios.get(import.meta.env.VITE_API_URL + "/services/me")
+                                    .then((r) => {
+                                        setUserServices(r.data)
+                                    }).catch((e) => {
+                                        console.log(e.response.data)
+                                    })
+                            }} onResolve={()=>{
+                                setAlertShow(false)
+                                setButtonState(false)
+                                setModalView(false)
+                                axios.get(import.meta.env.VITE_API_URL + "/services/me")
+                                .then((r) => {
+                                     if(r.data.length === 0) {
+                                         setUserServices(["  Você nâo possui serviços!!  "])
+                                     } else {
+                                        setUserServices(r.data)
+                                     }
+                                }).catch((e) => {
+                                    console.log(e.response.data)
+                                })
+                            }} show={alertShow} title={alertTitle} text={alertBody} />
                             <ModalButton onClick={() => {
                                 setModalView(false)
                             }}>x</ModalButton>
@@ -124,16 +173,53 @@ export const ProfilePage = () => {
                     <Container>
                         <SweetAlert2 onConfirm={() => {
                             setAlertShow(false)
+                            setButtonState(false)
+                            setModalView(false)
+                            axios.get(import.meta.env.VITE_API_URL + "/services/me")
+                                .then((r) => {
+                                    setUserServices(r.data)
+                                }).catch((e) => {
+                                    console.log(e.response.data)
+                                })
+                        }} onResolve={()=>{
+                            setAlertShow(false)
+                            setButtonState(false)
+                            setModalView(false)
+                            axios.get(import.meta.env.VITE_API_URL + "/services/me")
+                            .then((r) => {
+                                 if(r.data.length === 0) {
+                                     setUserServices(["  Você nâo possui serviços!!  "])
+                                 } else {
+                                    setUserServices(r.data)
+                                 }
+                            }).catch((e) => {
+                                console.log(e.response.data)
+                            })
                         }} show={alertShow} title={alertTitle} text={alertBody} />
                         <FormContainer>
                             <div className="addServiceIcon" onClick={() => {
                                 setModalView(true)
+                                setAlertTitle("")
+                                setAlertShow(false)
                             }}><MdAssignmentAdd size={"30px"} /><p>adicione um  serviço</p></div>
                             {userServices.map((s) => {
-                                return <Service setUserServices={setUserServices} key={s.id} viewEdit={true} object={s} />
+                                return <Service setUserServices={setUserServices}
+                                    setAlertTitle={setAlertTitle} setAlertShow={setAlertShow}
+                                    key={s.id} viewEdit={true} object={s} />
                             })}
                         </FormContainer>
                         <ReacModal ariaHideApp={false} isOpen={modalView}>
+                            <SweetAlert2 onConfirm={() => {
+                                setAlertShow(false)
+                                setButtonState(false)
+                                setModalView(false)
+                                axios.get(import.meta.env.VITE_API_URL + "/services/me")
+                                    .then((r) => {
+                                        setUserServices(r.data)
+                                    }).catch((e) => {
+                                        console.log(e.response.data)
+                                    })
+                            }} show={alertShow} title={alertTitle} text={alertBody} />
                             <ModalButton onClick={() => {
                                 setModalView(false)
                             }}>x</ModalButton>
